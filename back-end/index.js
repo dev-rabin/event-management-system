@@ -25,3 +25,11 @@ app.listen(port, ()=>{
 
 const userRouter = require("./src/routes/userRoutes");
 app.use("/api", userRouter);
+
+
+const eventRouter = require("./src/routes/eventRoutes");
+app.use("/api", eventRouter);
+
+
+const registrationRouter = require("./src/routes/registrationRoutes");
+app.use("/api", registrationRouter);
