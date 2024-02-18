@@ -33,3 +33,7 @@ app.use("/api", eventRouter);
 
 const registrationRouter = require("./src/routes/registrationRoutes");
 app.use("/api", registrationRouter);
+
+
+const adminRouter = require("./src/routes/adminRoutes");
+app.use("/api/admin", adminRouter);
