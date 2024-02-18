@@ -29,12 +29,36 @@
     --body-color : #030315;
     }
 
-    .navbar-evently{
+    .evently{
         font-family: "Lobster Two", sans-serif;
         font-weight: 700;
         font-style: normal;
-        background: linear-gradient(#FFA500, #FFFF00);
+        background: linear-gradient(#00f7ff, #00a2ff);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
+
+    .footer {
+      border-top: 1px solid white;
+      color: #fff;
+      padding: 20px;
+      text-align: justify;
+    }
+    
+    .footer-content {
+      display: flex;
+    }
+    
+    .footer-section {
+      flex: 1;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.2rem;
+    }
+    
+    .footer-section p {
+      margin: 5px 0;
+    }
+    

@@ -7,7 +7,7 @@ function NavbarComponent() {
     <div>
       <Navbar bg='md-dark lg-none' variant="dark" expand="md" className='fixed-top navbar-collapse'>
         <Container>
-          <Navbar.Brand className='fs-2 navbar-evently'>Evently</Navbar.Brand>
+          <Navbar.Brand className='fs-2 evently'>Evently</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className='mx-auto d-flex justify-content-evenly align-items-center'>
