@@ -7,12 +7,16 @@ import BlogsPage from './pages/Blogs';
 import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';
 import ServicesPage from './pages/Services';
+import NavbarComponent from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
 
   return (
     <>
+    
     <BrowserRouter>
+    <NavbarComponent/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/events' element={<EventsPage/>} />
@@ -21,6 +25,7 @@ function App() {
       <Route path='/about' element={<AboutPage/>} />
       <Route path='/contact' element={<ContactPage/>} />
     </Routes>
+    <Footer/>
     </BrowserRouter>
     </>
   )

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Container } from "react-bootstrap";
+import "./Pages.css";
 
 function AboutPage() {
   return (
     <div>
       <Container className="my-5 p-3">
-        <h1 className="text-white text-center my-3">About Us</h1>
+        <h1 className="text-center my-3 heading">About Us</h1>
         <p className="text-secondary text-center">
           At Evently, we are passionate about transforming your visions into
           exceptional events. With a dedicated team of professionals, we blend

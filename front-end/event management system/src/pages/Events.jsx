@@ -4,12 +4,13 @@ import ConferenceImage from "../assets/concert.jpg";
 import WeddingImage from "../assets/wedding.jpg";
 import PartyImage from "../assets/party1.jpg";
 import { Container } from "react-bootstrap";
+import "./Pages.css";
 
 function EventsPage() {
   return (
     <div>
-      <Container className="my-5 p-3 text-white">
-        <h1 className="text-center my-3">Events</h1>
+      <Container className="my-5 p-3">
+        <h1 className="text-center my-3 heading">Events</h1>
         <div className="d-flex text-center my-3 flex-wrap gap-1">
           <div className="col-3 my-3 mx-auto border border-primary rounded">
             <img
@@ -17,7 +18,7 @@ function EventsPage() {
               alt="Party Image"
               className="img-fluid rounded"
             />
-            <div className="my-2 fw-bold">Party</div>
+            <div className="my-2 fw-bold heading fs-5">Party</div>
           </div>
           <div className="col-3 my-3 mx-auto border border-primary rounded">
             <img
@@ -25,7 +26,7 @@ function EventsPage() {
               alt="Wedding Image"
               className="img-fluid rounded"
             />
-            <div className="my-2 fw-bold">Wedding</div>
+            <div className="my-2 fw-bold heading fs-5">Wedding</div>
           </div>
           <div className="col-3 my-3 mx-auto border border-primary rounded">
             <img
@@ -33,7 +34,7 @@ function EventsPage() {
               alt="Concert Image"
               className="img-fluid rounded"
             />
-            <div className="my-2 fw-bold">Concert</div>
+            <div className="my-2 fw-bold heading fs-5">Concert</div>
           </div>
           <div className="col-3 my-3 mx-auto border border-primary rounded">
             <img
@@ -41,7 +42,7 @@ function EventsPage() {
               alt="Conference Image"
               className="img-fluid rounded"
             />
-            <div className="my-2 fw-bold">Conference</div>
+            <div className="my-2 fw-bold heading fs-5">Conference</div>
           </div>
         </div>
       </Container>

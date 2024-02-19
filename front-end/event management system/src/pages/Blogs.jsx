@@ -1,11 +1,12 @@
 import React from 'react'
 import { Container} from "react-bootstrap";
+import "./Pages.css";
 
 function BlogsPage() {
   return (
     <div>
-      <Container className="my-5 p-3">
-        <h1 className="text-center text-white my-5">Blogs/News</h1>
+      <Container className="my-5 p-5">
+        <h1 className="text-center my-5 heading p-1">Blogs/News</h1>
         <div className="gap-1 d-flex justify-content-around text-white">
           <div className="col-3">
             <p>January 2024</p>

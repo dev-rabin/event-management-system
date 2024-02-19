@@ -1,12 +1,13 @@
 import React from 'react'
 import ConferenceImage from "../assets/concert.jpg";
 import { Container} from "react-bootstrap";
+import "./Pages.css";
 
 function ServicesPage() {
   return (
     <div>
       <Container className="my-5 p-3">
-        <h1 className="text-white text-center my-3">Services</h1>
+        <h1 className="text-center my-3 heading">Services</h1>
         <p className="text-secondary text-center">
           Our comprehensive event management services are designed to seamlessly
           bring your vision to life. From meticulous planning and creative
