@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 6000;
+const port = 7000;
 const database = require("./src/database");
 const cors = require("cors")
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
-app.use(cors());
+
 
 app.get("/", (req, res) => {
     database.ping((error)=>{

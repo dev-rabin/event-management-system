@@ -9,6 +9,8 @@ import ContactPage from './pages/Contact';
 import ServicesPage from './pages/Services';
 import AdminPage from './pages/admin/Admin';
 import Users from './pages/admin/Users';
+import LoginPage from './pages/Login';
+import UserRegistration from './pages/UserRegistration';
 
 function App() {
 
@@ -25,6 +27,9 @@ function App() {
       <Route path='/contact' element={<ContactPage/>} />
       <Route path='/admin' element={<AdminPage/>}/>
       <Route path='/admin/users' element={<Users/>}/>
+      <Route path='/login' element={<LoginPage/>}/>
+      <Route path='/register' element={<UserRegistration/>}/>
+
     </Routes>
     </BrowserRouter>
     </>

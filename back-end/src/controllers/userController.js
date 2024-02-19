@@ -1,4 +1,5 @@
 const database = require("../database");
+const generateToken  = require("../middleware/generateToken");
 
 const UserController = {
 
@@ -7,11 +8,17 @@ const UserController = {
         const query = "insert into user (name, email, password) values (?,?,?)";
         database.query(query,[name, email,password], (error, result) =>{
             if (error) {
-                res.json({succees: false , message: error});
-                console.log("creating user error : ", error);
+                if (error.code === "ER_DUP_ENTRY") {
+                    res.json({ success: false, message: "Email already registered!" });
+                } else {
+                    res.json({ success: false, message: "Error creating user:", error });
+                    console.error(error);
+                }
             } else {
-                res.json({succees : true , message : "User created successfully", id : result.insertId});
+                const token = generateToken(result.userId, result.name );
+                res.json({succees : true , message : "User created successfully", data:result , token : token});
                 console.log("User created successfullly : ", result);
+                console.log("User register token : ", token);
             }
         })
     },
@@ -28,13 +35,13 @@ const UserController = {
             } 
             else {
                 const user = result[0];
-                res.json({succees : true , message : "User login successfully!", id : user.insertId});
+                const token = generateToken(user.userId, user.name );
+                res.json({succees : true , message : "User login successfully!", data : user, token : token});
+                console.log("User login token : ", token);
                 console.log("Login user result :",user);
             }
         })
     },
-    
-
 }
 
 module.exports = UserController;
