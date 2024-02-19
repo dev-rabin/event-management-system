@@ -7,11 +7,13 @@ import ServicesPage from "./Services";
 import AboutPage from "./About";
 import BlogsPage from "./Blogs";
 import ContactPage from "./Contact";
+import Footer from "../components/Footer";
 
 
 function HomePage() {
   return (
     <div>
+    <NavbarComponent/>
       <div className="img-container">
         <div className="img-content ">
           <div className="img-div col-12 col-md-8 col-sm-12 col-lg-6 col-xl-6 mt-md-5 mt-sm-5 mt-lg-2 mt-5">
@@ -31,6 +33,7 @@ function HomePage() {
       <AboutPage/>
       <BlogsPage/>
       <ContactPage/>
+      <Footer/>
     </div>
   );
 }

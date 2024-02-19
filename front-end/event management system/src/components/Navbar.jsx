@@ -14,7 +14,7 @@ function NavbarComponent() {
             <Nav className='mx-auto d-flex justify-content-evenly align-items-center'>
               <NavLink to="/" className='fs-5 mx-2 text-decoration-none text-white'>Home</NavLink>
               <NavLink to = "/events" className='fs-5 mx-2 text-decoration-none text-white'>Events</NavLink>
-              <NavLink to = "/gallery" className='fs-5 mx-2 text-decoration-none text-white'>Gallery</NavLink>
+              <NavLink to = "/services" className='fs-5 mx-2 text-decoration-none text-white'>Services</NavLink>
               <NavLink to = "/blogs" className='fs-5 mx-2 text-decoration-none text-white'>Blogs</NavLink>
             </Nav>
             <div className='text-center'><Button>Contact Us</Button></div>

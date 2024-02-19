@@ -7,8 +7,8 @@ import BlogsPage from './pages/Blogs';
 import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';
 import ServicesPage from './pages/Services';
-import NavbarComponent from './components/Navbar';
-import Footer from './components/Footer';
+import AdminPage from './pages/admin/Admin';
+import Users from './pages/admin/Users';
 
 function App() {
 
@@ -16,7 +16,6 @@ function App() {
     <>
     
     <BrowserRouter>
-    <NavbarComponent/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/events' element={<EventsPage/>} />
@@ -24,8 +23,9 @@ function App() {
       <Route path='/services' element={<ServicesPage/>} />
       <Route path='/about' element={<AboutPage/>} />
       <Route path='/contact' element={<ContactPage/>} />
+      <Route path='/admin' element={<AdminPage/>}/>
+      <Route path='/admin/users' element={<Users/>}/>
     </Routes>
-    <Footer/>
     </BrowserRouter>
     </>
   )
