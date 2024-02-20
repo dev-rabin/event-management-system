@@ -2,8 +2,10 @@ import React from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import "./components.css";
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../store/auth';
 
 function NavbarComponent() {
+  const {isLoggedIn} = useAuth();
   return (
     <div>
       <Navbar bg='md-dark lg-none' variant="dark" expand="md" className='fixed-top navbar-collapse'>
@@ -18,7 +20,9 @@ function NavbarComponent() {
               <NavLink to = "/blogs" className='fs-5 mx-3 text-decoration-none text-white'>Blogs</NavLink>
             </Nav>
             <div className='text-center'><Button>Contact Us</Button></div>
-            <NavLink to="/login" className="text-decoration-none text-white mx-2">Login</NavLink>
+            <div>
+              {isLoggedIn ? <NavLink to="/logout" className="text-decoration-none text-white mx-2">Logout</NavLink> : <NavLink to="/login" className="text-decoration-none text-white mx-2">Login</NavLink>}
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

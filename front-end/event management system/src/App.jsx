@@ -11,6 +11,7 @@ import AdminPage from './pages/admin/Admin';
 import Users from './pages/admin/Users';
 import LoginPage from './pages/Login';
 import UserRegistration from './pages/UserRegistration';
+import LogOutPage from './pages/LogOut';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Route path='/admin' element={<AdminPage/>}/>
       <Route path='/admin/users' element={<Users/>}/>
       <Route path='/login' element={<LoginPage/>}/>
+      <Route path='/logout' element={<LogOutPage/>}/>
       <Route path='/register' element={<UserRegistration/>}/>
 
     </Routes>
