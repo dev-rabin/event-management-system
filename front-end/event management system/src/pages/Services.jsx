@@ -5,7 +5,7 @@ import "./Pages.css";
 
 function ServicesPage() {
   return (
-    <div>
+    <>
       <Container className="my-5 p-3">
         <h1 className="text-center my-3 heading">Services</h1>
         <p className="text-secondary text-center">
@@ -64,7 +64,7 @@ function ServicesPage() {
           </div>
         </div>
       </Container>
-    </div>
+    </>
   )
 }
 

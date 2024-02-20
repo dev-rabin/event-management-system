@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function AdminPage() {
   return (
-    <div>
+    <>
       <div className='d-flex text-white'>
       <aside className='border col-2 p-3' style={{height: "100vh"}}>
       <h1 className='mb-5'>Details</h1>
@@ -14,7 +14,7 @@ function AdminPage() {
       </div>
       </aside>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ import "./Pages.css";
 
 function ContactPage() {
   return (
-    <div>
+    <>
       <Container className='my-5'>
         <h1 className="text-center my-3 heading">Contact Us</h1>
         <div className="d-flex justify-content-between flex-wrap" >
@@ -23,7 +23,7 @@ function ContactPage() {
         </div>
         </div>
       </Container>
-    </div>
+    </>
   )
 }
 

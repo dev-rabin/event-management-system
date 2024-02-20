@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 
 function HomePage() {
   return (
-    <div>
+    <>
     <NavbarComponent/>
       <div className="img-container">
         <div className="img-content ">
@@ -34,7 +34,7 @@ function HomePage() {
       <BlogsPage/>
       <ContactPage/>
       <Footer/>
-    </div>
+    </>
   );
 }
 

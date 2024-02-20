@@ -8,7 +8,7 @@ import "./Pages.css";
 
 function EventsPage() {
   return (
-    <div>
+    <>
       <Container className="my-5 p-3">
         <h1 className="text-center my-3 heading">Events</h1>
         <div className="d-flex text-center my-3 flex-wrap gap-1">
@@ -46,7 +46,7 @@ function EventsPage() {
           </div>
         </div>
       </Container>
-    </div>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ import "./Pages.css";
 
 function BlogsPage() {
   return (
-    <div>
+    <>
       <Container className="my-5 p-5">
         <h1 className="text-center my-5 heading p-1">Blogs/News</h1>
         <div className="gap-1 d-flex justify-content-around text-white">
@@ -31,7 +31,7 @@ function BlogsPage() {
           </div>
         </div>
       </Container>
-    </div>
+    </>
   )
 }
 

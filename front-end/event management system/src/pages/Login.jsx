@@ -3,8 +3,11 @@ import { Button, FloatingLabel, Form } from "react-bootstrap";
 import LoginGif from "../assets/login.gif";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Pages.css"
+import { useAuth } from "../store/auth"; // Import the useAuth hook
 
 function LoginPage() {
+
+    const { storeToken } = useAuth(); // Use the useAuth hook to access storeToken function
 
     const navigate = useNavigate();
     const [login , setLogin] = useState({
@@ -26,14 +29,16 @@ function LoginPage() {
             body : JSON.stringify(login)
         });
         if(response.ok){
-            const data = await response.json();
+            const responseData = await response.json();
+            storeToken(responseData.token);
+            console.log("response data user token : ", responseData.token);
             setLogin({
                 email : "",
                 password : ""
             });
-            alert(data.message);
+            alert(responseData.message);
             navigate("/");
-            console.log("User login : ",data);
+            console.log("User login : ",responseData);
         }
         } catch (error) {
             console.error("Login error : ",error);
@@ -42,7 +47,7 @@ function LoginPage() {
     }
 
   return (
-    <div>
+    <>
       <h1 className="text-center mt-5 p-2 heading">Login</h1>
       <div className=" d-flex justify-content-around container">
       
@@ -68,7 +73,7 @@ function LoginPage() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

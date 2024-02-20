@@ -9,11 +9,12 @@ function verifyToken (req , res, next) {
     if(!token){
        return res.json({success : false , message : "Token not provided"});
     } 
-    jwt.verify(secretKey,token, (error, decoded) => {
+    jwt.verify(token,secretKey, (error, decoded) => {
         if (error) {
             return res.status(403).json({ message: error, success: false }); 
         }
         console.log("decoded token : " , decoded);
+        next();
     })
 }
 

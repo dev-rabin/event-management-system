@@ -4,7 +4,7 @@ import "./Pages.css";
 
 function AboutPage() {
   return (
-    <div>
+    <>
       <Container className="my-5 p-3">
         <h1 className="text-center my-3 heading">About Us</h1>
         <p className="text-secondary text-center">
@@ -16,7 +16,7 @@ function AboutPage() {
           Welcome to a world of unparalleled event management.
         </p>
       </Container>
-    </div>
+    </>
   )
 }
 

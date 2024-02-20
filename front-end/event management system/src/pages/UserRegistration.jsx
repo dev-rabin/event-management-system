@@ -3,8 +3,10 @@ import { Button, FloatingLabel, Form } from "react-bootstrap";
 import LoginGif from "../assets/login.gif";
 import { NavLink } from "react-router-dom";
 import "./Pages.css";
+import { useAuth } from "../store/auth";
 
 function UserRegistration() {
+  const {storeToken} = useAuth();
   const [register, setRegister] = useState({
     name: "",
     email: "",
@@ -25,14 +27,15 @@ function UserRegistration() {
             body : JSON.stringify(register)
         });
         if(response.ok){
-            const data = await response.json();
+            const responseData = await response.json();
+            storeToken(responseData.token);
             setRegister({
                 name: "",
                 email: "",
                 password: "",
             });
-            console.log("User registration data : ",data);
-            alert(data.message)
+            console.log("User registration data : ",responseData);
+            alert(responseData.message)
         }
     } catch (error) {
         console.error("User registration error : ",error);

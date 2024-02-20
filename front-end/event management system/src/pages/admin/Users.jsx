@@ -2,7 +2,7 @@ import React from 'react'
 
 function Users() {
   return (
-    <div>
+    <>
       <main className='mx-2 p-2'>
         <h1>Users :</h1>
         <div className='border col-12 d-flex flex-row flex-wrap p-2'>
@@ -32,7 +32,7 @@ function Users() {
           </div>
         </div>
       </main>
-    </div>
+    </>
   )
 }
 
