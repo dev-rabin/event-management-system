@@ -8,10 +8,11 @@ import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';
 import ServicesPage from './pages/Services';
 import AdminPage from './pages/admin/Admin';
-import Users from './pages/admin/Users';
+import AdminUsers from './pages/admin/AdminUsers';
 import LoginPage from './pages/Login';
 import UserRegistration from './pages/UserRegistration';
 import LogOutPage from './pages/LogOut';
+import EventsCreation from './pages/admin/EventsCreation';
 
 function App() {
 
@@ -26,11 +27,15 @@ function App() {
       <Route path='/services' element={<ServicesPage/>} />
       <Route path='/about' element={<AboutPage/>} />
       <Route path='/contact' element={<ContactPage/>} />
-      <Route path='/admin' element={<AdminPage/>}/>
-      <Route path='/admin/users' element={<Users/>}/>
+      
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/logout' element={<LogOutPage/>}/>
       <Route path='/register' element={<UserRegistration/>}/>
+
+      <Route path='/admin' element={<AdminPage/>}>
+        <Route path='users' element = {<AdminUsers/>}/>
+        <Route path='eventCreate' element = {<EventsCreation/>}/>
+      </Route>
 
     </Routes>
     </BrowserRouter>

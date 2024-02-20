@@ -1,0 +1,9 @@
+.event-time-class{
+    display: flex;
+    padding: 10px 0px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.event-time-class input{
+    width: 400px;
+}

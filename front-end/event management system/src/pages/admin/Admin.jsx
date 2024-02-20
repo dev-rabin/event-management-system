@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function AdminPage() {
   return (
@@ -11,8 +11,10 @@ function AdminPage() {
         <NavLink to="/admin/users" className='my-2 text-decoration-none fs-5 text-white'><p>Users</p></NavLink>
         <NavLink to="/admin/" className='my-2 text-decoration-none fs-5 text-white'><p>Events</p></NavLink>
         <NavLink to="/admin/" className='my-2 text-decoration-none fs-5 text-white'><p>Contacts</p></NavLink>
+        <NavLink to="/admin/eventCreate" className='my-2 text-decoration-none fs-5 text-white'><p>Plan a Event</p></NavLink>
       </div>
       </aside>
+      <Outlet/>
       </div>
     </>
   )

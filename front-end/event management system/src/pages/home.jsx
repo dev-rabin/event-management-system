@@ -7,7 +7,7 @@ import ServicesPage from "./Services";
 import AboutPage from "./About";
 import BlogsPage from "./Blogs";
 import ContactPage from "./Contact";
-import Footer from "../components/Footer";
+import FooterComponent from "../components/Footer";
 
 
 function HomePage() {
@@ -33,7 +33,7 @@ function HomePage() {
       <AboutPage/>
       <BlogsPage/>
       <ContactPage/>
-      <Footer/>
+      <FooterComponent/>
     </>
   );
 }

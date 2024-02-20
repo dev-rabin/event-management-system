@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Users() {
+function AdminUsers() {
   return (
     <>
       <main className='mx-2 p-2'>
@@ -36,4 +36,4 @@ function Users() {
   )
 }
 
-export default Users;
+export default AdminUsers;
