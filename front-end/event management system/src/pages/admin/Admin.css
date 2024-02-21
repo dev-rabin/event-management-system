@@ -7,3 +7,10 @@
 .event-time-class input{
     width: 400px;
 }
+.scroll-div{
+    max-height: 300px; 
+  overflow-y: auto;
+}
+.scroll-div::-webkit-scrollbar{
+    width: 0;
+}

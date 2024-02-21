@@ -13,6 +13,8 @@ import LoginPage from './pages/Login';
 import UserRegistration from './pages/UserRegistration';
 import LogOutPage from './pages/LogOut';
 import EventsCreation from './pages/admin/EventsCreation';
+import AdminEvents from './pages/admin/AdminEvents';
+import UpdateEvent from './pages/admin/UpdateEvent';
 
 function App() {
 
@@ -35,6 +37,9 @@ function App() {
       <Route path='/admin' element={<AdminPage/>}>
         <Route path='users' element = {<AdminUsers/>}/>
         <Route path='eventCreate' element = {<EventsCreation/>}/>
+        <Route path='eventUpdate' element = {<UpdateEvent/>}/>
+        <Route path='events' element = {<AdminEvents/>}/>
+
       </Route>
 
     </Routes>

@@ -121,6 +121,23 @@ const UserController = {
       }
     });
   },
+
+  deleteUser: (req, res) => {
+    const userId = req.params.userId;
+    console.log("delete user userId : ", userId);
+    const sql = 'DELETE FROM user WHERE userId = ?';
+    database.query(sql, [userId], (err, result) => {
+        if (err) {
+            console.error('Error deleting user:', err);
+            res.json({ success: false, message: 'Error deleting user', error: err });
+            return;
+        }
+        else{
+          console.log('User deleted successfully');
+          return res.json({ success: true, message: 'User deleted successfully' });
+        }
+    });
+  }
 };
 
 module.exports = UserController;
