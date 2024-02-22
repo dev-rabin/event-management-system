@@ -1,11 +1,14 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom';
+import { useAuth } from '../../store/auth';
 
 function AdminPage() {
+  const {user} = useAuth;
   return (
     <>
+    <div className='text-center fs-1 text-white my-2'>{user ? user.name : "Admin data"}</div>
       <div className='d-flex text-white'>
-      <aside className='border col-2 p-3' style={{height: "100vh"}}>
+      <aside className='col-2 p-3'>
       <h1 className='mb-5'>Details</h1>
       <div>
         <NavLink to="/admin/users" className='my-2 text-decoration-none fs-5 text-white'><p>Users</p></NavLink>
@@ -16,6 +19,7 @@ function AdminPage() {
       </div>
       </aside>
       <Outlet/>
+      
       </div>
     </>
   )

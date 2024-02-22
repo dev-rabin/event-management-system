@@ -52,11 +52,11 @@ function AdminUsers() {
 
   return (
     <>
-      <main className='mx-2 p-2'>
-        <h1 className='mx-4'>Users:</h1>
+      <main className='m-2 p-2 bg-light text-dark rounded'>
+        <h1 className='mx-3'>Users:</h1>
         <div className='d-flex flex-wrap p-2'>
           {users.map((user, index) => (
-            <div key={index} className='m-3 col-3 p-2'>
+            <div key={index} className='col-4 p-2'>
               <p>Username: {user.name}</p>
               <p>Email: {user.email}</p>
               <div>

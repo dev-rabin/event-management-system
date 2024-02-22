@@ -15,7 +15,7 @@ function EventsPage() {
         {events.map((event,index)=>(
           <div key={index} className="col-3 my-3 mx-auto border border-primary rounded">
           <img
-            src={event.images}
+            src={event.imagesURL[0]}
             alt="Party Image"
             className="img-fluid rounded"
           />

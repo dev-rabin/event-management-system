@@ -15,7 +15,7 @@ const UpdateEvent = () => {
     location: '',
     capacity: '',
     category: '',
-    images: []
+    imagesURL: []
   });
 
   const handleChange = (e) => {
@@ -27,10 +27,10 @@ const UpdateEvent = () => {
   };
 
   const handleImageChange = (e) => {
-    const images = Array.from(e.target.files);
+    const imagesURL = Array.from(e.target.files);
     setFormData(prevState => ({
       ...prevState,
-      images: images
+      imagesURL: imagesURL
     }));
   };
 
@@ -86,8 +86,8 @@ const UpdateEvent = () => {
           <Form.Label>Category:</Form.Label>
           <Form.Control type="text" name="category" value={formData.category} onChange={handleChange} />
         </Form.Group>
-        <Form.Group controlId="formImages">
-          <Form.Label>Images:</Form.Label>
+        <Form.Group controlId="formimagesURL">
+          <Form.Label>imagesURL:</Form.Label>
           <Form.Control type="file" multiple onChange={handleImageChange} />
         </Form.Group>
         <Button variant="primary" type="submit">

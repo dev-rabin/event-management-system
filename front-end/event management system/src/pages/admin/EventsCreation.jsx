@@ -4,57 +4,69 @@ import "./Admin.css";
 import { useAuth } from "../../store/auth";
 
 function EventsCreation() {
-    const { user } = useAuth(); // Call useAuth to get the user object
-    const [formData, setFormData] = useState({
-      organizerId: "", // Assuming user object has an id property
-      title: '',
-      description: '',
-      date: '',
-      location: '',
-      capacity: '',
-      category: '',
-      images: []
-    });
-  
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData(prevState => ({
-        ...prevState,
-        [name]: value
-      }));
-    };
-  
-    const handleImageChange = (e) => {
-      const images = Array.from(e.target.files);
-      setFormData(prevState => ({
-        ...prevState,
-        images: images
-      }));
-    };
-  
-    const handleSubmit = async(e) => {
-      e.preventDefault();
-     
-      console.log("Event creation initial data : ",formData);
-        try {
-            const response = await fetch("http://localhost:7000/api/admin/eventCreate", {
-                method: "POST",
-                body: JSON.stringify(formData)
-            });
-    
-            if (response.ok) {
-                const responseData = await response.json();
-                console.log("Event created successfully:", responseData);
-            } else {
-                console.error("Failed to create event:", response.message);
-            }
-        } catch (error) {
-            console.error("Event create error:", error);
-        }
-      console.log(formData);
-   
-    };
-  
+  const { user } = useAuth();
+  const [formData, setFormData] = useState({
+    organizerId: user.userId,
+    title: '',
+    description: '',
+    date: '',
+    location: '',
+    capacity: '',
+    category: '',
+    imagesURL: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  // const handleImageChange = (e) => {
+  //   const imagesURL = Array.from(e.target.files);
+  //   const imageUrls = [];
+  //   imagesURL.forEach(async (image) => {
+  //     const dataUrl = await readFileAsDataURL(image);
+  //     imageUrls.push(dataUrl);
+  //   });
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     imagesURL: imageUrls
+  //   }));
+  // };
+
+  // const readFileAsDataURL = (file) => {
+  //   return new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.onload = () => resolve(reader.result);
+  //     reader.onerror = reject;
+  //     reader.readAsDataURL(file);
+  //   });
+  // };
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:7000/api/admin/eventCreate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Event created successfully:", responseData);
+      } else {
+        console.error("Failed to create event:", response.message);
+      }
+    } catch (error) {
+      console.error("Event create error:", error);
+    }
+  };
     return (
       <div>
         <h2>Submit Event</h2>
@@ -87,10 +99,10 @@ function EventsCreation() {
             <label>Category:</label>
             <input type="text" name="category" value={formData.category} onChange={handleChange} />
           </div>
-          <div>
-            <label>Images:</label>
+          {/* <div>
+            <label>images:</label>
             <input type="file" multiple onChange={handleImageChange} />
-          </div>
+          </div> */}
           <button type="submit">Submit</button>
         </form>
       </div>

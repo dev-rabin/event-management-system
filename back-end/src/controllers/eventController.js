@@ -2,9 +2,9 @@ const database = require("../database");
 
 const EventController = {
     createEvent: (req, res) => {
-        const { organizerId, title, description, date, location, capacity, category, images } = req.body;
-        const query = "INSERT INTO event (organizerId, title, description, date, location, capacity, category, images) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        database.query(query, [organizerId, title, description, date, location, capacity, category, images], (error, result) => {
+        const { organizerId, title, description, date, location, capacity, category, imagesURL } = req.body;
+        const query = "INSERT INTO event (organizerId, title, description, date, location, capacity, category, imagesURL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        database.query(query, [organizerId, title, description, date, location, capacity, category, imagesURL], (error, result) => {
             if (error) {
                 console.error("Error creating event:", error);
                 return res.status(500).json({ success: false, message: "Event not created", error });
@@ -30,10 +30,10 @@ const EventController = {
     updateEvent: (req, res) => {
         const eventId = req.params.eventId;
         console.log("update eventID: ", eventId);
-        const { title, description, date, location, capacity, category, images } = req.body;
-        const query = `UPDATE event SET title = ?, description = ?, date = ?, location = ?, capacity = ?, category = ?, images = ? WHERE eventId = ?`;
+        const { title, description, date, location, capacity, category, imagesURL } = req.body;
+        const query = `UPDATE event SET title = ?, description = ?, date = ?, location = ?, capacity = ?, category = ?, imagesURL = ? WHERE eventId = ?`;
     
-        database.query(query, [title, description, date, location, capacity, category, images, eventId], (error, result) => {
+        database.query(query, [title, description, date, location, capacity, category, imagesURL, eventId], (error, result) => {
             if (error) {
                 console.error("Update event error: ", error);
                 res.json({ success: false, message: error });
