@@ -15,6 +15,8 @@ import LogOutPage from './pages/LogOut';
 import EventsCreation from './pages/admin/EventsCreation';
 import AdminEvents from './pages/admin/AdminEvents';
 import UpdateEvent from './pages/admin/UpdateEvent';
+import NavbarComponent from './components/Navbar';
+import FooterComponent from './components/Footer';
 
 function App() {
 
@@ -22,6 +24,7 @@ function App() {
     <>
     
     <BrowserRouter>
+    <NavbarComponent/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/events' element={<EventsPage/>} />
@@ -43,6 +46,7 @@ function App() {
       </Route>
 
     </Routes>
+    <FooterComponent/>
     </BrowserRouter>
     </>
   )

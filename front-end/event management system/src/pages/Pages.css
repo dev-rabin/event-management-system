@@ -101,3 +101,15 @@
  outline: none;
 }
 
+.events-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px; /* Adjust padding as needed */
+}
+
+/* Optionally, you can style individual events within the container */
+.events-container .event {
+  flex: 0 0 auto;
+  margin-right: 20px; /* Adjust margin between events as needed */
+  /* Add additional styles for individual events */
+}
