@@ -7,6 +7,7 @@ const adminRouter = express.Router();
 adminRouter.get("/users", adminController.getAllUsers);
 adminRouter.get("/events", adminController.getAllEvents);
 adminRouter.get("/contacts", adminController.getAllContacts);
+adminRouter.get("/registrations", adminController.getRegistrations);
 adminRouter.post("/eventCreate", EventController.createEvent);
 adminRouter.put("/eventUpdate/:eventId", EventController.updateEvent);
 adminRouter.delete("/eventDelete/:eventId", EventController.deleteEvent);

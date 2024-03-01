@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import EventsPage from "./Events";
 import ServicesPage from "./Services";
 import AboutPage from "./About";
@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 
 
 function HomePage() {
-
   return (
     <>
       <div className="img-container">
@@ -23,16 +22,27 @@ function HomePage() {
             Unforgettable moments where sophistication meets modernity.
           </div>
           <div className="img-button my-3">
-            <Button variant="primary">Book Now</Button>
+          
+            <Link
+              activeClass="active"
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              <Button variant="primary">Book Now</Button>
+            </Link>
           </div>
         </div>
       </div>
-      
-      <div id="events">
-  <EventsPage />
-</div>
 
-      <div className='text-center'>
+      <div id="events">
+        <EventsPage />
+      </div>
+
+      <div className="text-center">
+    
         <Link
           activeClass="active"
           to="events"
@@ -41,14 +51,19 @@ function HomePage() {
           offset={-70}
           duration={500}
         >
-          <NavLink to = "/events"><Button>Show all</Button></NavLink>
+          <NavLink to="/events">
+            <Button>Show all</Button>
+          </NavLink>
         </Link>
       </div>
 
       <ServicesPage />
       <AboutPage />
       <BlogsPage />
-      <ContactPage />
+
+      <div id="contact">
+        <ContactPage />
+      </div>
     </>
   );
 }

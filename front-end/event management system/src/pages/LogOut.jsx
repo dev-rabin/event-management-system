@@ -11,7 +11,9 @@ function LogOutPage() {
     navigate("/login");
   }, []);
 
-  return <></>;
+  return( <>
+    
+  </>);
 }
 
 export default LogOutPage;

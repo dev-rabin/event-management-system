@@ -6,5 +6,6 @@ const userRouter = express.Router();
 userRouter.post("/createAccount", UserController.createUser);
 userRouter.post("/login" , UserController.loginUser);
 userRouter.get("/user",verifyToken, UserController.getUserByToken);
+userRouter.post("/contact", UserController.contactUs);
 
 module.exports = userRouter;

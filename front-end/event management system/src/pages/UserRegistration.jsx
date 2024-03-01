@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import LoginGif from "../assets/login.gif";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Pages.css";
 import { useAuth } from "../store/auth";
 
@@ -12,7 +12,7 @@ function UserRegistration() {
     email: "",
     password: "",
   });
-
+const navigate = useNavigate();
   const handleInputChange = (e) => {
     setRegister({ ...register, [e.target.name]: e.target.value });
   };
@@ -35,7 +35,9 @@ function UserRegistration() {
                 password: "",
             });
             console.log("User registration data : ",responseData);
-            alert(responseData.message)
+            alert(responseData.message);
+            navigate("/");
+
         }
     } catch (error) {
         console.error("User registration error : ",error);

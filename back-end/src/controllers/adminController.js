@@ -40,6 +40,18 @@ const adminController = {
                 console.log(result);
             }
         })
+    },
+    getRegistrations : (req , res) => {
+        const query = "select * from registration";
+        database.query(query,(error,result) =>{
+            if (error) {
+                res.json({success: false, message : "Registration data not found!"});
+                console.error("Getregistrations error :", error);
+            } else{
+                res.json({success : true , message : "Your registration data" ,data: result});
+                console.log(result);
+            }
+        })
     }
 
 }

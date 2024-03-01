@@ -1,5 +1,10 @@
 import React from 'react'
-import ConferenceImage from "../assets/concert.jpg";
+import catering from "../assets/catering.jpg";
+import entertainment from "../assets/entertainment.jpg";
+import eventDesign from "../assets/eventDesign.jpg";
+import eventPlanning from "../assets/eventPlanning.jpg";
+import eventVanue from "../assets/eventVanue.jpg";
+import postEvent from "../assets/postEvent.jpg";
 import { Container} from "react-bootstrap";
 import "./Pages.css";
 
@@ -16,7 +21,7 @@ function ServicesPage() {
         <div className="d-flex flex-wrap gap-1 text-white services">
           <div className="col-3 my-3 mx-auto rounded">
             <img
-              src={ConferenceImage}
+              src={eventPlanning}
               alt="Conference Image"
               className="img-fluid rounded"
             />
@@ -24,7 +29,7 @@ function ServicesPage() {
           </div>
           <div className="col-3 my-3 mx-auto rounded">
             <img
-              src={ConferenceImage}
+              src={eventDesign}
               alt="Conference Image"
               className="img-fluid rounded"
             />
@@ -32,7 +37,7 @@ function ServicesPage() {
           </div>
           <div className="col-3 my-3 mx-auto rounded">
             <img
-              src={ConferenceImage}
+              src={eventVanue}
               alt="Conference Image"
               className="img-fluid rounded"
             />
@@ -40,7 +45,7 @@ function ServicesPage() {
           </div>
           <div className="col-3 my-3 mx-auto rounded">
             <img
-              src={ConferenceImage}
+              src={entertainment}
               alt="Conference Image"
               className="img-fluid rounded"
             />
@@ -48,7 +53,7 @@ function ServicesPage() {
           </div>
           <div className="col-3 my-3 mx-auto rounded">
             <img
-              src={ConferenceImage}
+              src={catering}
               alt="Conference Image"
               className="img-fluid rounded"
             />
@@ -56,7 +61,7 @@ function ServicesPage() {
           </div>
           <div className="col-3 my-3 mx-auto rounded">
             <img
-              src={ConferenceImage}
+              src={postEvent}
               alt="Conference Image"
               className="img-fluid rounded"
             />

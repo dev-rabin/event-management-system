@@ -137,6 +137,19 @@ const UserController = {
           return res.json({ success: true, message: 'User deleted successfully' });
         }
     });
+  },
+  contactUs : (req, res) => {
+    const {email, name , mobile, message} = req.body;
+    const query = "insert into contact (email, name , mobile, message) values (?,?,?,?)";
+    database.query(query,[email, name , mobile,message], (error, result) => {
+      if (error) {
+        console.error("Contact us error : ", error);
+        return res.json({succees: false , message : error});
+      } else {
+        console.log("Contact us saved : ", result);
+        return res.json({succees : true, message : "Your contact query has been saved!"});
+      }
+    })
   }
 };
 

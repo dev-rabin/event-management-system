@@ -21,15 +21,7 @@
     font-weight: 700;
     font-style: italic;
   }
-  
-
-:root{
-    --main-color : #05318A;
-    --secondry-color : #DDE3FD;
-    --body-color : #030315;
-    }
-
-    .evently{
+      .evently{
         font-family: "Lobster Two", sans-serif;
         font-weight: 700;
         font-style: normal;

@@ -17,6 +17,8 @@ import AdminEvents from './pages/admin/AdminEvents';
 import UpdateEvent from './pages/admin/UpdateEvent';
 import NavbarComponent from './components/Navbar';
 import FooterComponent from './components/Footer';
+import AdminContacts from './pages/admin/AdminContacts';
+import AdminRegistrations from './pages/admin/AdminRegistrations';
 
 function App() {
 
@@ -42,7 +44,8 @@ function App() {
         <Route path='eventCreate' element = {<EventsCreation/>}/>
         <Route path='eventUpdate' element = {<UpdateEvent/>}/>
         <Route path='events' element = {<AdminEvents/>}/>
-
+        <Route path='contacts' element = {<AdminContacts/>}/>
+        <Route path='registrations' element = {<AdminRegistrations/>}/>
       </Route>
 
     </Routes>

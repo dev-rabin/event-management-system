@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FloatingLabel, Form } from "react-bootstrap";
+import { Button, Container, FloatingLabel, Form } from "react-bootstrap";
 import LoginGif from "../assets/login.gif";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Pages.css"
@@ -48,9 +48,9 @@ function LoginPage() {
 
   return (
     <>
+      <Container className="my-5">
       <h1 className="text-center mt-5 p-2 heading">Login</h1>
       <div className=" d-flex justify-content-around container">
-      
         <div className="rounded col-6 mt-5">
         <h2 className="text-center text-white">User Login!</h2>
           <FloatingLabel label="Email" className=" m-5">
@@ -73,6 +73,7 @@ function LoginPage() {
           />
         </div>
       </div>
+      </Container>
     </>
   );
 }
