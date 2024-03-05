@@ -2,11 +2,13 @@ const express = require("express");
 const app = express();
 const port = 7000;
 const database = require("./src/database");
-const cors = require("cors")
+const cors = require("cors");
+const path = require('path');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended : true}))
+app.use(express.urlencoded({extended : true}));
+app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 app.get("/", (req, res) => {

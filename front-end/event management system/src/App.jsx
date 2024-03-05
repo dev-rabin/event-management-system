@@ -19,6 +19,7 @@ import NavbarComponent from './components/Navbar';
 import FooterComponent from './components/Footer';
 import AdminContacts from './pages/admin/AdminContacts';
 import AdminRegistrations from './pages/admin/AdminRegistrations';
+import EventDetailPage from './pages/EventDetailPage';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/events' element={<EventsPage/>} />
+      <Route path='/events/:eventId' element={<EventDetailPage/>} />
       <Route path='/blogs' element={<BlogsPage/>} />
       <Route path='/services' element={<ServicesPage/>} />
       <Route path='/about' element={<AboutPage/>} />

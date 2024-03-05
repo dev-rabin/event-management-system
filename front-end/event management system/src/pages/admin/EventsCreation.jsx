@@ -1,113 +1,110 @@
-import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { useAuth } from '../../store/auth';
 import "./Admin.css";
-import { useAuth } from "../../store/auth";
 
-function EventsCreation() {
+const CreateEventForm = () => {
   const { user } = useAuth();
   const [formData, setFormData] = useState({
-    organizerId: user.userId,
+    organizerId: '',
     title: '',
     description: '',
     date: '',
     location: '',
     capacity: '',
     category: '',
-    imagesURL: ""
+    imagesURL: null,
   });
+
+  console.log("Event creation User:", user);
+
+  useEffect(() => {
+    if (user) {
+      setFormData({ ...formData, organizerId: user.userId });
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    console.log("Event creation Name:", name);
+    console.log("Event creation Value:", value);
+    setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
-  // const handleImageChange = (e) => {
-  //   const imagesURL = Array.from(e.target.files);
-  //   const imageUrls = [];
-  //   imagesURL.forEach(async (image) => {
-  //     const dataUrl = await readFileAsDataURL(image);
-  //     imageUrls.push(dataUrl);
-  //   });
-  //   setFormData(prevState => ({
-  //     ...prevState,
-  //     imagesURL: imageUrls
-  //   }));
-  // };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    console.log("Event creation imageURL : ", file);
+    setFormData(prevData => ({ ...prevData, imagesURL: file }));
+  };
 
-  // const readFileAsDataURL = (file) => {
-  //   return new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = reject;
-  //     reader.readAsDataURL(file);
-  //   });
-  // };
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:7000/api/admin/eventCreate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
+      const formDataWithFile = new FormData();
+      formDataWithFile.append('organizerId', formData.organizerId);
+      formDataWithFile.append('title', formData.title);
+      formDataWithFile.append('description', formData.description);
+      formDataWithFile.append('date', formData.date);
+      formDataWithFile.append('location', formData.location);
+      formDataWithFile.append('capacity', formData.capacity);
+      formDataWithFile.append('category', formData.category);
+      formDataWithFile.append('imagesURL', formData.imagesURL);
 
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Event created successfully:", responseData);
-      } else {
-        console.error("Failed to create event:", response.message);
-      }
+      console.log("FormatDataWithFile : ", formDataWithFile);
+      const response = await fetch('http://localhost:7000/api/admin/eventCreate', {
+        method: 'POST',
+        body: formDataWithFile,
+      });
+      const data = await response.json();
+      console.log("Events creation data : ", data);
     } catch (error) {
-      console.error("Event create error:", error);
+      console.error('Error creating event:', error);
     }
   };
-    return (
-      <div>
-        <h2>Submit Event</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Organizer ID:</label>
-            <input type="text" name="organizerId" value={formData.organizerId} onChange={handleChange} />
-          </div>
-          <div>
-            <label>Title:</label>
-            <input type="text" name="title" value={formData.title} onChange={handleChange} />
-          </div>
-          <div>
-            <label>Description:</label>
-            <textarea name="description" value={formData.description} onChange={handleChange}></textarea>
-          </div>
-          <div>
-            <label>Date:</label>
-            <input type="date" name="date" value={formData.date} onChange={handleChange} />
-          </div>
-          <div>
-            <label>Location:</label>
-            <input type="text" name="location" value={formData.location} onChange={handleChange} />
-          </div>
-          <div>
-            <label>Capacity:</label>
-            <input type="number" name="capacity" value={formData.capacity} onChange={handleChange} />
-          </div>
-          <div>
-            <label>Category:</label>
-            <input type="text" name="category" value={formData.category} onChange={handleChange} />
-          </div>
-          {/* <div>
-            <label>images:</label>
-            <input type="file" multiple onChange={handleImageChange} />
-          </div> */}
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    );
-  };
-  
 
-export default EventsCreation;
+  return (
+    <Container className='event-creation'>
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="organizerId">
+              <Form.Label>Organizer</Form.Label>
+              <Form.Control type="text" name="organizerId" placeholder="Organizer ID" value={formData.organizerId} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="title">
+              <Form.Label>Title</Form.Label>
+              <Form.Control type="text" name="title" placeholder="Title" value={formData.title} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="description">
+              <Form.Label>Description</Form.Label>
+              <Form.Control as="textarea" name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="date">
+              <Form.Label>Date</Form.Label>
+              <Form.Control type="date" name="date" placeholder="Date" value={formData.date} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="location">
+              <Form.Label>Location</Form.Label>
+              <Form.Control type="text" name="location" placeholder="Location" value={formData.location} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="capacity">
+              <Form.Label>Capacity</Form.Label>
+              <Form.Control type="number" name="capacity" placeholder="Capacity" value={formData.capacity} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="category">
+              <Form.Label>Category</Form.Label>
+              <Form.Control type="text" name="category" placeholder="Category" value={formData.category} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="imagesURL">
+              <Form.Label>Image</Form.Label>
+              <Form.Control type="file" name="imagesURL" onChange={handleFileChange} />
+            </Form.Group>
+            <Button variant="primary" type="submit" className='mt-2'>Create Event</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default CreateEventForm;

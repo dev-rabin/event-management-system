@@ -19,7 +19,7 @@ function ServicesPage() {
           conceptualization to flawless execution, we offer a range of expertise
         </p>
         <div className="d-flex flex-wrap gap-1 text-white services">
-          <div className="col-3 my-3 mx-auto rounded">
+          <div className="col-3 my-3 mx-auto rounded service-div">
             <img
               src={eventPlanning}
               alt="Conference Image"

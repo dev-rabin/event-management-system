@@ -90,7 +90,11 @@
 }
 
 .services div{
-  box-shadow: 2px 2px rgb(140, 142, 169);
+  transition: transform 0.1s ease-in-out;
+}
+.services div:hover{
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .form-field{
@@ -104,12 +108,54 @@
 .events-container {
   display: flex;
   overflow-x: auto;
-  padding: 20px; /* Adjust padding as needed */
+  padding: 20px;
 }
 
-/* Optionally, you can style individual events within the container */
 .events-container .event {
   flex: 0 0 auto;
-  margin-right: 20px; /* Adjust margin between events as needed */
-  /* Add additional styles for individual events */
+  margin-right: 20px;
 }
+
+.event-div :hover{
+ cursor: pointer;
+}
+
+.event-title {
+  font-size: 2rem;
+  color: #333;
+}
+
+.event-details {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.event-details-title {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.event-details-description {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.event-details-info {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.register-button {
+  margin-top: 20px;
+}
+
+.loading-message {
+  font-size: 1.2rem;
+  color: #777;
+}
+

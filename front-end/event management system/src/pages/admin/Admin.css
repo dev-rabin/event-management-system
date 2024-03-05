@@ -14,3 +14,6 @@
 .scroll-div::-webkit-scrollbar{
     width: 0;
 }
+.event-creation{
+    margin-top: 100px;
+  }

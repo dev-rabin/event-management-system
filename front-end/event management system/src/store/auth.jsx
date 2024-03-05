@@ -39,28 +39,28 @@ export const AuthProvider = ({children}) =>{
             console.error("get user data error : " , error);
         }
     };
-    const getAllEvents = async () =>{
-        try {
-            const response = await fetch("http://localhost:7000/api/events", {
-                method : "GET",
-                headers : {
-                    "Content-Type" : "application/json"
-                }
-            });
-            if (response.ok) {
-                const responseData = await response.json();
-                setEvents(responseData.data);
-                console.log("Events data : ", responseData.data);
-            }
-        } catch (error) {
-            console.error("Events error : ", error);
-        }
-    }
+    // const getAllEvents = async () =>{
+    //     try {
+    //         const response = await fetch("http://localhost:7000/api/events", {
+    //             method : "GET",
+    //             headers : {
+    //                 "Content-Type" : "application/json"
+    //             }
+    //         });
+    //         if (response.ok) {
+    //             const responseData = await response.json();
+    //             setEvents(responseData.data);
+    //             console.log("Events data : ", responseData.data);
+    //         }
+    //     } catch (error) {
+    //         console.error("Events error : ", error);
+    //     }
+    // }
 
     useEffect(() =>{
         if (isLoggedIn) {
             getUserData();
-            getAllEvents();
+            // getAllEvents();
         }
        setUser(null);
     },[])
