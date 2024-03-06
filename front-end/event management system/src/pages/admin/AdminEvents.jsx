@@ -69,12 +69,9 @@ const deleteEvent = async (eventId) => {
       <Container className="my-2 p-3">
         <h1 className="text-left mx-5">Events</h1>
         <div className="d-flex text-left text-dark rounded gap-1 justify-content-between flex-wrap bg-light">
-          {events.length === 0 ? (
-            <p>No events found!</p>
-          ) : (
-            events.map((event, index) => (
-              <div
-                key={index}
+           
+            {events.map((event,index)=>(
+              <div key={index}
                 className="col-3 my-3 mx-auto border border-primary rounded p-3 scroll-div">
                 <div>
                   <div className="my-2 fs-5">Event Name : {event.title}</div>
@@ -88,8 +85,7 @@ const deleteEvent = async (eventId) => {
                   <Button onClick={() => handleEventUpdate(event.eventId)}>Update</Button>
                 </div>
               </div>
-            ))
-          )}
+            ))}
         </div>
       </Container>
     </>

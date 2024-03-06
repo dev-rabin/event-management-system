@@ -38,7 +38,7 @@ useEffect(() =>{
           <div key={index} className="col-3 my-3 mx-auto border border-primary rounded">
             <Link to={`/events/${event.eventId}`} className='text-decoration-none'>
               <img
-                src={event.imagesURL || EventlyImage}
+                src={`http://localhost:7000/api/${event.imagesURL}`}
                 alt="Event Image"
                 className="img-fluid rounded"
               />

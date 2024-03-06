@@ -1,20 +1,28 @@
 const database = require("../database");
 const multer = require("multer");
-const path = require("path");
+const moment = require("moment")
 
-// Define the base URL for the images
-const baseUrl = "http://localhost:7000/api/uploads/";
-
-const uploadDir = path.join(__dirname, '..', 'uploads');
-
-const storage = multer.diskStorage({
-  destination: uploadDir,
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
+const imgConfiq = multer.diskStorage({
+  destination : (req,file, callBack) =>{
+    callBack(null,"./uploads" );
+  },
+  filename : (req,file,callBack) => {
+    callBack(null , `image-${Date.now()}.${file.originalname}`)
   }
 });
 
-const upload = multer({ storage: storage });
+const isImage = (req,file,callBack)=>{
+  if (file.mimetype.startsWith("image")) {
+    callBack(null,true)
+  }else{
+    callBack(null,Error("Only image is allowed"))
+  }
+} 
+
+const uploads = multer({
+  storage : imgConfiq,
+  fileFilter : isImage
+});
 
 const EventController = {
   createEvent: (req, res) => {
@@ -28,41 +36,21 @@ const EventController = {
       category,
     } = req.body;
 
-    let imagesURL = null;
-    if (req.file) {
-      imagesURL = baseUrl + req.file.filename;
-    }
-    
-    const query =
-      "INSERT INTO event (organizerId, title, description, date, location, capacity, category, imagesURL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    database.query(
-      query,
-      [
-        organizerId,
-        title,
-        description,
-        date,
-        location,
-        capacity,
-        category,
-        imagesURL,
-      ],
-      (error, result) => {
-        if (error) {
-          console.error("Error creating event:", error);
-          return res
-            .status(500)
-            .json({ success: false, message: "Event not created", error });
-        } else {
-          console.log("Event created successfully:", result);
-          return res.status(200).json({
-            success: true,
-            message: "Event created successfully",
-            id: result.insertId,
-          });
-        }
-      }
-    );
+    const imagesURL = req.file ? req.file.path : null;
+    database.query("insert into event set ?", {organizerId:organizerId,title : title, description:description,date:date,location:location,capacity:capacity,category:category,imagesURL:imagesURL},(error , result) =>{
+      if (error) {
+        console.error("Error creating event:", error);
+        return res
+          .status(500)
+          .json({ success: false, message: "Event not created", error });
+      } else {
+        console.log("Event created successfully:", result);
+        return res.status(200).json({
+          success: true,
+          message: "Event created successfully",
+          id: result.insertId,
+        });
+    }})
   },
   getAllEvents: (req, res) => {
     const query = "SELECT * FROM event";
@@ -146,6 +134,7 @@ const EventController = {
       }
     });
   },
+
   fetchByEventId: (req, res) => {
     const eventId = req.params.eventId;
     const query = "SELECT * FROM event WHERE eventId = ?";
@@ -170,4 +159,4 @@ const EventController = {
   },
 };
 
-module.exports = { EventController, upload };
+module.exports = {EventController,uploads};
