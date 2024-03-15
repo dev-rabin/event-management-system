@@ -20,6 +20,7 @@ import FooterComponent from './components/Footer';
 import AdminContacts from './pages/admin/AdminContacts';
 import AdminRegistrations from './pages/admin/AdminRegistrations';
 import EventDetailPage from './pages/EventDetailPage';
+import NotFound from './pages/404';
 
 function App() {
 
@@ -36,6 +37,10 @@ function App() {
       <Route path='/services' element={<ServicesPage/>} />
       <Route path='/about' element={<AboutPage/>} />
       <Route path='/contact' element={<ContactPage/>} />
+    
+      {/* Error Page */}
+      <Route path='/*' element={<NotFound/>} />
+
       
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/logout' element={<LogOutPage/>}/>

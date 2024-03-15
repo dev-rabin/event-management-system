@@ -7,9 +7,12 @@ import AboutPage from "./About";
 import BlogsPage from "./Blogs";
 import ContactPage from "./Contact";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 
 function HomePage() {
+  const {user} = useAuth();
+  console.log("Homepage user : ", user);
   return (
     <>
       <div className="img-container">

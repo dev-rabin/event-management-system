@@ -7,7 +7,7 @@ function verifyToken (req , res, next) {
     console.log("Verify token : ", token);
 
     if(!token){
-       return res.json({success : false , message : "Token not provided"});
+       return res.json({success : false , message : "Unauthorized HTTP ,Token not provided"});
     } 
     jwt.verify(token,secretKey, (error, decoded) => {
         if (error) {

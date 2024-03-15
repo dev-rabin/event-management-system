@@ -2,7 +2,7 @@ const database = require("../database");
 
 const adminController = {
     getAllUsers : (req,res) =>{
-        const query = "select userId,name,email from user";
+        const query = "select userId,name,email,isAdmin from user";
         database.query(query, (error, result) =>{
             if (error) {
                 res.json({success : false , message :"Users not found", error});

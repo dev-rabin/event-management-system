@@ -102,7 +102,7 @@ const UserController = {
     const payload = jwt.decode(req.headers.authorization);
     const userId = payload.userId;
     console.log("get user by token user id : ", userId);
-    const query = "select userId, name , email from user where userId = ?";
+    const query = "select userId, name , email, isAdmin from user where userId = ?";
     database.query(query, [userId], (error, result) => {
       if (error) {
         console.error("get user by token error", error);

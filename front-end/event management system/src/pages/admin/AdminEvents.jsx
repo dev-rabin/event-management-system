@@ -66,23 +66,23 @@ const deleteEvent = async (eventId) => {
 
   return (
     <>
-      <Container className="my-2 p-3">
-        <h1 className="text-left mx-5">Events</h1>
-        <div className="d-flex text-left text-dark rounded gap-1 justify-content-between flex-wrap bg-light">
+      <Container className="bg-light text-dark rounded p-3" style={{margin : "5rem 2rem"}}>
+        <h1 className="text-center">Events</h1>
+        <div className="d-flex text-left justify-content-start flex-wrap ">
            
             {events.map((event,index)=>(
               <div key={index}
-                className="col-3 my-3 mx-auto border border-primary rounded p-3 scroll-div">
+                className="col-4 my-3 mx-auto border border-primary rounded p-3 scroll-div">
                 <div>
-                  <div className="my-2 fs-5">Event Name : {event.title}</div>
-                  <div className="my-2 fs-5">Description : {event.description}</div>
-                  <div className="my-2 fs-5">Category : {event.category}</div>
-                  <div className="my-2 fs-5">Location : {event.location}</div>
-                  <div className="my-2 fs-5">Capacity : {event.capacity}</div>
+                  <div className="my-2 fs-5"><b>Event Name</b> : {event.title}</div>
+                  <div className="my-2 fs-5"><b>Description</b> : {event.description}</div>
+                  <div className="my-2 fs-5"><b>Category</b> : {event.category}</div>
+                  <div className="my-2 fs-5"><b>Location</b> : {event.location}</div>
+                  <div className="my-2 fs-5"><b>Capacity</b> : {event.capacity}</div>
                 </div>
-                <div>
-                  <Button className="m-2" onClick={() => deleteEvent(event.eventId)}>Delete</Button>
-                  <Button onClick={() => handleEventUpdate(event.eventId)}>Update</Button>
+                <div className="d-flex justify-content-start">
+                  <Button variant="danger" onClick={() => deleteEvent(event.eventId)}>Delete</Button>
+                  <Button variant="success" className="mx-2" onClick={() => handleEventUpdate(event.eventId)}>Update</Button>
                 </div>
               </div>
             ))}

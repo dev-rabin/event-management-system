@@ -3,11 +3,11 @@ import { Button, Container, FloatingLabel, Form } from "react-bootstrap";
 import LoginGif from "../assets/login.gif";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Pages.css"
-import { useAuth } from "../store/auth"; // Import the useAuth hook
+import { useAuth } from "../store/auth";
 
 function LoginPage() {
 
-    const { storeToken } = useAuth(); // Use the useAuth hook to access storeToken function
+    const { storeToken, isAuthenticated } = useAuth();
 
     const navigate = useNavigate();
     const [login , setLogin] = useState({
@@ -39,13 +39,14 @@ function LoginPage() {
             alert(responseData.message);
             navigate("/");
             console.log("User login : ",responseData);
+            return;
         }
         } catch (error) {
             console.error("Login error : ",error);
             alert(error);
+            return;
         }
     }
-
   return (
     <>
       <Container className="my-5">

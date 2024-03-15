@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
+  const token = localStorage.getItem("token");
 
   const getAllUsers = async () => {
     try {
       const response = await fetch("http://localhost:7000/api/admin/users", {
         method: "GET",
         headers: {
-          "Content-Type": "application/json"
+          Authorization : token
         }
       });
       if (response.ok) {
@@ -52,11 +53,12 @@ function AdminUsers() {
 
   return (
     <>
-      <main className='m-2 p-2 bg-light text-dark rounded'>
-        <h1 className='mx-3'>Users:</h1>
-        <div className='d-flex flex-wrap p-2'>
-          {users.map((user, index) => (
-            <div key={index} className='col-4 p-2'>
+     <Container className='p-3' style={{margin : "4rem"}}>
+     <main className='m-2 p-2 bg-light text-dark rounded'>
+        <h1 className='text-center'>Users</h1>
+        <div className='d-flex flex-wrap'>
+          {users && users.map((user, index) => (
+            <div key={index} className='p-5 border rounded m-1'>
               <p>Username: {user.name}</p>
               <p>Email: {user.email}</p>
               <div>
@@ -66,6 +68,7 @@ function AdminUsers() {
           ))}
         </div>
       </main>
+     </Container>
     </>
   )
 }

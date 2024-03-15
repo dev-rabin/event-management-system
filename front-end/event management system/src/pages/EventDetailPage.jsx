@@ -69,7 +69,7 @@ const registerAtEvent = async (eventId) => {
       {eventDetails ? (        
         <div className="event-details d-flex">
         <div className='col-6'>
-            <img src={eventDetails.imagesURL} className='rounded img-fluid'/>
+            <img src={`http://localhost:7000/api/${eventDetails.imagesURL}`} className='rounded img-fluid'/>
         </div>
           <div style={{marginLeft : "20px"}}>
           <h2 className="event-details-title">{eventDetails.title}</h2>

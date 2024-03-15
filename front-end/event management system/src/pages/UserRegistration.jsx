@@ -22,7 +22,7 @@ const navigate = useNavigate();
         const response = await fetch("http://localhost:7000/api/createAccount",{
             method : "POST",
             headers : {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body : JSON.stringify(register)
         });
@@ -36,7 +36,7 @@ const navigate = useNavigate();
             });
             console.log("User registration data : ",responseData);
             alert(responseData.message);
-            navigate("/");
+            navigate("/login");
 
         }
     } catch (error) {

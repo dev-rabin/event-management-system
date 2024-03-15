@@ -1,0 +1,40 @@
+
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .not-found-image {
+    width: 350px;
+    margin-right: 40px;
+    border-radius: 8px;
+  }
+  
+  .not-found-content {
+    text-align: center;
+  }
+  
+  .not-found-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .not-found-message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: rgb(150, 150, 150);
+  }
+  
+  .not-found-link {
+    font-size: 1.2rem;
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .not-found-link:hover {
+    text-decoration: underline;
+  }
+  
