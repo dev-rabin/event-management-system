@@ -71,7 +71,7 @@ const navigate = useNavigate();
               onChange={handleInputChange}
             />
           </FloatingLabel>
-          <FloatingLabel co label="Password" className="m-4">
+          <FloatingLabel label="Password" className="m-4">
             <Form.Control
               type="password"
               placeholder="Password"

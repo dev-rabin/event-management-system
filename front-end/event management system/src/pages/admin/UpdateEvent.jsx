@@ -59,7 +59,7 @@ const UpdateEvent = () => {
   };
 
   return (
-    <Container>
+    <Container style={{margin:"5rem"}}>
       <h2>Update Event</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formTitle">
@@ -90,7 +90,7 @@ const UpdateEvent = () => {
           <Form.Label>imagesURL:</Form.Label>
           <Form.Control type="file" multiple onChange={handleImageChange} />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className='mt-2'>
           Submit
         </Button>
       </Form>

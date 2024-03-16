@@ -1,17 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-scroll';
 import { useAuth } from '../store/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignIn, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
+import "./components.css"
 
 function NavbarComponent() {
   const { isLoggedIn } = useAuth();
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const scrollPercentage = (position / (scrollHeight - clientHeight)) * 100;
+      setScrollPosition(scrollPercentage);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navbarClassName = scrollPosition >= 6 ? 'custom-navbar fixed-top scrolled' : 'custom-navbar fixed-top';
 
   return (
     <div>
-      <Navbar expand="md"  className="custom-navbar fixed-top">
+      <Navbar expand="md" className={navbarClassName}>
         <Container>
           <Navbar.Brand className='fs-1 evently'>Evently</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

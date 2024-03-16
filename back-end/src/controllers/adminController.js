@@ -42,7 +42,7 @@ const adminController = {
         })
     },
     getRegistrations : (req , res) => {
-        const query = "select * from registration";
+        const query = "select user.name,email,status,registration.registrationId,event.title,capacity,date from registration inner join user on registration.userId = user.userId inner join event on registration.eventId = event.eventId;";
         database.query(query,(error,result) =>{
             if (error) {
                 res.json({success: false, message : "Registration data not found!"});
@@ -52,7 +52,32 @@ const adminController = {
                 console.log(result);
             }
         })
+    },
+    updateRegistrationStatus: (req, res) => {
+        const { registrationId, status } = req.body;
+        const query = "UPDATE registration SET status = ? WHERE registrationId = ?";
+        database.query(query, [status, registrationId], (error, result) => {
+            if (error) {
+                console.error("updateRegistrationStatus error:", error);
+                return res.status(500).json({ success: false, message: "An error occurred while updating registration status." });
+            } else {
+                console.log("updateRegistrationStatus updated:", result);
+                return res.json({ success: true, message: "Ticket status has been updated!", data: result });
+            }
+        });
+    },
+    deleteContactId : (req, res) => {
+        const contactId = req.params.contactId;
+        const query = "delete from contact where contactId = ? ";
+        database.query(query,contactId,(error,result)=>{
+            if (error) {
+                console.error("Delete contact error : ", error);
+                return res.json({success : false, message : error.message})
+            } else{
+                console.log("Delete contact successfully : ", result);
+                return res.json({success : true, message : "Contact has been deleted"});
+            }
+        })
     }
-
 }
 module.exports = adminController;

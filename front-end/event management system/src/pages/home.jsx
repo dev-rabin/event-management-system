@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-scroll";
 import EventsPage from "./Events";
@@ -11,8 +11,11 @@ import { useAuth } from "../store/auth";
 
 
 function HomePage() {
-  const {user} = useAuth();
+  const { user } = useAuth();
+ 
+
   console.log("Homepage user : ", user);
+
   return (
     <>
       <div className="img-container">
@@ -25,7 +28,6 @@ function HomePage() {
             Unforgettable moments where sophistication meets modernity.
           </div>
           <div className="img-button my-3">
-          
             <Link
               activeClass="active"
               to="contact"
@@ -45,19 +47,9 @@ function HomePage() {
       </div>
 
       <div className="text-center">
-    
-        <Link
-          activeClass="active"
-          to="events"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          <NavLink to="/events">
-            <Button>Show all</Button>
-          </NavLink>
-        </Link>
+        <NavLink to="/events">
+          <Button>Show all</Button>
+        </NavLink>
       </div>
 
       <ServicesPage />

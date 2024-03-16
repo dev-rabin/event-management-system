@@ -10,7 +10,7 @@ function AdminUsers() {
       const response = await fetch("http://localhost:7000/api/admin/users", {
         method: "GET",
         headers: {
-          Authorization : token
+          Authorization: token
         }
       });
       if (response.ok) {
@@ -44,32 +44,39 @@ function AdminUsers() {
       alert(error);
     }
   };
-  
-  
 
   useEffect(() => {
     getAllUsers();
   }, []);
 
   return (
-    <>
-     <Container className='p-3' style={{margin : "4rem"}}>
-     <main className='m-2 p-2 bg-light text-dark rounded'>
-        <h1 className='text-center'>Users</h1>
-        <div className='d-flex flex-wrap'>
-          {users && users.map((user, index) => (
-            <div key={index} className='p-5 border rounded m-1'>
-              <p>Username: {user.name}</p>
-              <p>Email: {user.email}</p>
-              <div>
-                <Button variant='primary' onClick={() => deleteUser(user.userId)}>Delete User</Button>
-              </div>
-            </div>
-          ))}
-        </div>
+    <Container className='p-3' style={{ margin: "4rem" }}>
+      <main className='m-2 p-2 bg-light text-dark rounded'>
+        <h1 className='text-left text-decoration-underline'>Users</h1>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  <Button variant='primary' onClick={() => deleteUser(user.userId)}>Delete User</Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </main>
-     </Container>
-    </>
+    </Container>
   )
 }
 

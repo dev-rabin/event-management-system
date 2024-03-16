@@ -74,7 +74,7 @@ const CreateEventForm = () => {
 
   return (
     <Container className='event-creation'>
-    <h1 className='text-center my-2'>Plan a event</h1>
+    <h1 className='text-center my-2 text-decoration-underline'>Plan a event</h1>
             <Form onSubmit={handleSubmit}>
           <div className='d-flex justify-content-around flex-wrap'>
           <Form.Group controlId="organizerId" className='col-5'>

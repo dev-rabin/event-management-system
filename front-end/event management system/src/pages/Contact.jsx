@@ -47,7 +47,7 @@ function ContactPage() {
         <FloatingLabel label="Your Email" className="col-4 my-1 form-label">
           <Form.Control type="email" placeholder="Your Email" className='form-field' name='email' value={contact.email} onChange={handleContactInput}/>
         </FloatingLabel>
-        <FloatingLabel co label="Your Name" className="col-4 my-1 form-label">
+        <FloatingLabel label="Your Name" className="col-4 my-1 form-label">
           <Form.Control type="text" placeholder="Your Name" className='form-field' name='name' value={contact.name} onChange={handleContactInput}/>
         </FloatingLabel>
         <FloatingLabel label="Your Contact No." className="col-4 my-1 form-label">

@@ -48,7 +48,7 @@
     height: 100%;
     background-image: url("../assets/event.jpg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position:center;
     background-size: cover;
     opacity: 0.3; 
 }

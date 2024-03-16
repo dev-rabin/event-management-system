@@ -53,4 +53,11 @@
     .footer-section p {
       margin: 5px 0;
     }
+    .custom-navbar {
+      transition: background-color 0.3s ease;
+    }
+    
+    .scrolled {
+      background-color: #000011;
+    }
     

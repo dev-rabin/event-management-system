@@ -49,15 +49,15 @@ function LoginPage() {
     }
   return (
     <>
-      <Container className="my-5">
-      <h1 className="text-center mt-5 p-2 heading">Login</h1>
+      <Container className="my-5 p-3">
+      <h1 className="text-center heading p-2">Login</h1>
       <div className=" d-flex justify-content-around container">
         <div className="rounded col-6 mt-5">
         <h2 className="text-center text-white">User Login!</h2>
           <FloatingLabel label="Email" className=" m-5">
             <Form.Control type="email" placeholder="Email" className='form-field' name="email" value={login.email} onChange={handleInputChange}/>
           </FloatingLabel>
-          <FloatingLabel co label="Password" className="m-5">
+          <FloatingLabel label="Password" className="m-5">
             <Form.Control type="password" placeholder="Password" className='form-field' name="password" value={login.password} onChange={handleInputChange} />
           </FloatingLabel>
           <div className="text-center">
