@@ -4,6 +4,7 @@ import { useAuth } from '../../store/auth';
 import "./Admin.css";
 
 const CreateEventForm = () => {
+  const token = localStorage.getItem("token");
   const { user } = useAuth();
   const [formData, setFormData] = useState({
     organizerId: '',
@@ -38,7 +39,6 @@ const CreateEventForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
       const formDataWithFile = new FormData();
       formDataWithFile.append('organizerId', formData.organizerId);
@@ -53,20 +53,27 @@ const CreateEventForm = () => {
       console.log("FormatDataWithFile : ", formDataWithFile);
       const response = await fetch('http://localhost:7000/api/admin/eventCreate', {
         method: 'POST',
+        headers : {
+          Authorization : token
+        },
         body: formDataWithFile,
       });
-      const data = await response.json();
-      setFormData({
-        organizerId: '',
-        title: '',
-        description: '',
-        date: '',
-        location: '',
-        capacity: '',
-        category: '',
-        imagesURL: null,
-      })
-      console.log("Events creation data : ", data);
+      if (response.ok) {
+        const data = await response.json();
+        setFormData({
+          organizerId: '',
+          title: '',
+          description: '',
+          date: '',
+          location: '',
+          capacity: '',
+          category: '',
+          imagesURL: null,
+        })
+        console.log("Events creation data : ", data);
+        alert("Event created successfully");
+      }
+   
     } catch (error) {
       console.error('Error creating event:', error);
     }
@@ -118,7 +125,7 @@ const CreateEventForm = () => {
         </div>
             
            <div className='text-center my-4'>
-           <Button variant="primary" type="submit" className='col-11'>Create Event</Button>
+           <Button variant="primary" type="submit" className='col-11' onClick={()=>handleSubmit()}>Create Event</Button>
            </div>
           
           </Form>

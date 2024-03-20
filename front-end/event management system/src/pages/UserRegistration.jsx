@@ -47,10 +47,9 @@ const navigate = useNavigate();
 
   return (
     <>
-      <h1 className="text-center mt-5 p-2 heading">Register</h1>
       <div className=" d-flex justify-content-around container">
         <div className="rounded col-6 mt-5">
-          <h2 className="text-center text-white">User Registration!</h2>
+        <h1 className="text-center mt-5 p-2 heading">Register here!</h1>
           <FloatingLabel label="Name" className=" m-4">
             <Form.Control
               type="text"

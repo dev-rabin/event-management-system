@@ -53,7 +53,7 @@ function AdminUsers() {
     <Container className='p-3' style={{ margin: "4rem" }}>
       <main className='m-2 p-2 bg-light text-dark rounded'>
         <h1 className='text-left text-decoration-underline'>Users</h1>
-        <table className="table">
+        <table className="table-responsive">
           <thead>
             <tr>
               <th>#</th>

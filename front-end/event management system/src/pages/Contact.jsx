@@ -44,14 +44,14 @@ function ContactPage() {
       <Container className='my-5'>
         <h1 className="text-center my-3 heading">Contact Us</h1>
         <div className="d-flex justify-content-between flex-wrap" >
-        <FloatingLabel label="Your Email" className="col-4 my-1 form-label">
-          <Form.Control type="email" placeholder="Your Email" className='form-field' name='email' value={contact.email} onChange={handleContactInput}/>
+        <FloatingLabel label="Email" className="col-4 my-1 form-label">
+          <Form.Control type="email" placeholder="Email" className='form-field' name='email' value={contact.email} onChange={handleContactInput}/>
         </FloatingLabel>
-        <FloatingLabel label="Your Name" className="col-4 my-1 form-label">
-          <Form.Control type="text" placeholder="Your Name" className='form-field' name='name' value={contact.name} onChange={handleContactInput}/>
+        <FloatingLabel label="Name" className="col-4 my-1 form-label">
+          <Form.Control type="text" placeholder="Name" className='form-field' name='name' value={contact.name} onChange={handleContactInput}/>
         </FloatingLabel>
-        <FloatingLabel label="Your Contact No." className="col-4 my-1 form-label">
-          <Form.Control type="text" placeholder="Your Contact No." className='form-field' name='mobile' value={contact.mobile} onChange={handleContactInput}/>
+        <FloatingLabel label="Contact No." className="col-4 my-1 form-label">
+          <Form.Control type="text" placeholder="Contact No." className='form-field' name='mobile' value={contact.mobile} onChange={handleContactInput}/>
         </FloatingLabel>
         <textarea id="" cols="0" rows="5" className="col-12 my-1 rounded p-2 form-field" placeholder='Message...' name='message' value={contact.message} onChange={handleContactInput}/>
         <div className="text-center col-12 my-1">
