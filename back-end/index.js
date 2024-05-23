@@ -5,7 +5,11 @@ const database = require("./src/database");
 const cors = require("cors");
 const path = require('path');
 
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200,
+  };
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 app.use('/api/uploads', express.static('uploads'));

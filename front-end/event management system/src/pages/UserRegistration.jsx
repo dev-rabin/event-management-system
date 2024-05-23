@@ -4,6 +4,8 @@ import LoginGif from "../assets/login.gif";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Pages.css";
 import { useAuth } from "../store/auth";
+import { GoogleLogin } from "@react-oauth/google";
+
 
 function UserRegistration() {
   const {storeToken} = useAuth();
@@ -45,6 +47,14 @@ const navigate = useNavigate();
     }
   };
 
+ const responseMessage = (response)=>{
+  console.log("Google login response : ",response);
+ }
+
+ const errorMessage = (error) => {
+  console.error("Google login error : ",error);
+ }
+
   return (
     <>
       <div className=" d-flex justify-content-around container">
@@ -80,8 +90,11 @@ const navigate = useNavigate();
               onChange={handleInputChange}
             />
           </FloatingLabel>
-          <div className="text-center">
+          <div className="text-center mb-3">
             <Button onClick={handleRegister}>Register</Button>
+          </div>
+          <div className="d-flex justify-content-center align-items-center my-3">
+          <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
           </div>
           <p className="text-center mt-4 text-light">
             Already have an account ?
@@ -98,6 +111,7 @@ const navigate = useNavigate();
             width="450px"
           />
         </div>
+        
       </div>
     </>
   );

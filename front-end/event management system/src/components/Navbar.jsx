@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, Dropdown } from "react-bootstrap";
 import { Link } from "react-scroll";
 import { useAuth } from "../store/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignIn, faPowerOff } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { faSignIn, faUser } from "@fortawesome/free-solid-svg-icons";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./components.css";
+import { googleLogout } from "@react-oauth/google";
+
 
 function NavbarComponent() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, logOutUser, user } = useAuth();
   const [scrollPosition, setScrollPosition] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +34,7 @@ function NavbarComponent() {
     scrollPosition >= 6
       ? "custom-navbar fixed-top scrolled"
       : "custom-navbar fixed-top";
+
 
   return (
     <div>
@@ -65,36 +69,70 @@ function NavbarComponent() {
                 Blogs
               </NavLink>
             </Nav>
-            <div className="text-center">
-              <Link
-                activeClass="active"
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                <Button variant="primary" className="m-2">
-                  Contact Us
-                </Button>
-                <span>
-                  {isLoggedIn ? (
-                    <NavLink
-                      to="/logout"
-                      className="text-decoration-none text-white"
-                    >
-                      <FontAwesomeIcon icon={faPowerOff} fontSize={"22px"} />
-                    </NavLink>
-                  ) : (
-                    <NavLink
-                      to="/login"
-                      className="text-decoration-none text-white"
-                    >
-                      <FontAwesomeIcon icon={faSignIn}  fontSize={"22px"} />
-                    </NavLink>
-                  )}
-                </span>
-              </Link>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <Link
+                  activeClass="active"
+                  to="contact"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  <Button variant="primary" className="m-2">
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
+              <div>
+                {user ? (
+                  <Dropdown>
+                    <Dropdown.Toggle variant="none" id="dropdown-basic">
+                      {user && user.picture ? (
+                        <img
+                          src={user.picture}
+                          alt="Profile"
+                          className="rounded-circle"
+                          width="30"
+                        />
+                      ) : (
+                        <FontAwesomeIcon icon={faUser} fontSize={"16px"} />
+                      )}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      {user && (
+                        <>
+                          <div
+                            style={{
+                              fontSize: "14px",
+                              maxWidth: "150px",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap"
+                            }}
+                          >
+                            <Dropdown.ItemText>{user.name}</Dropdown.ItemText>
+                            <Dropdown.ItemText>{user.email}</Dropdown.ItemText>
+                          </div>
+                        </>
+                      )}
+                      <Dropdown.Divider />
+                      <Dropdown.Item onClick={logOutUser}>
+                        Logout
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : (
+                  <NavLink
+                    to="/login"
+                    className="text-decoration-none text-white"
+                  >
+                    {/* <FontAwesomeIcon icon={faSignIn} fontSize={"22px"} /> */}
+                   <Button variant="outline-primary">Login</Button>
+                  </NavLink>
+                )}
+              </div>
             </div>
           </Navbar.Collapse>
         </Container>
